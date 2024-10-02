@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="jp">
   <head>
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
    <header class="shadw-sm">
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
        <div class="container">
@@ -24,34 +25,46 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to '/users/:id', class: "btn btn btn-secondary text-white" do %>
+            <li class="nav-item my-2">
+              <%= link_to '/users/:id', class: "text-white" do %>
                <i class="fa-solid fa-house" style="color: #ffffff;"></i> Home
               <% end %>
             </li>
-            <li  class="nav-item">
+            <li  class="nav-item my-2">
               <%= link_to users_path, class: "text-white" do %>
                <i class="fa-solid fa-users" style="color: #ffffff;"></i> Users
               <% end %>
             </li>
-            <li  class="nav-item">
-              <%= link_to "Books", books_path %>
+            <li  class="nav-item my-2">
+              <%= link_to books_path, class: "text-white" do %>
+               <i class="fa-solid fa-book-open" style="color: #ffffff;"></i> Books
+              <% end %>
             </li>
-            <li  class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            <li  class="nav-item my-2">
+              <%= link_to destroy_user_session_path, class: "text-white", method: :delete do %>
+               <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Log out
+              <% end %>
             </li>
             <% else %>
-            <li  class="nav-item">
-              <%= link_to "Bokers", root_path %>
+            <li  class="nav-item my-2">
+              <%= link_to root_path, class: "text-white" do %>
+               <i class="fa-solid fa-house" style="color: #ffffff;"></i> Home
+              <% end %>
             </li>
-            <li  class="nav-item">
-              <%= link_to "About", home_about_path %>
+            <li  class="nav-item my-2">
+              <%= link_to home_about_path, class: "text-white" do %>
+               <i class="fa-solid fa-link" style="color: #ffffff;"></i> About
+              <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path %>
+            <li class="nav-item my-2">
+              <%= link_to new_user_registration_path, class: "text-white" do %>
+               <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i> Sign up
+              <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Log in", new_user_session_path %>
+            <li class="nav-item my-2">
+              <%= link_to new_user_session_path, class: "text-white" do %>
+                <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Log in
+              <% end %>
             </li>
             <% end %>
             </ul>
@@ -60,8 +73,20 @@
      </nav>
 
    </header>
-    <%= yield %>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+   <main  class="mb-auto">
+     <%= yield %>
+   </main>
+   <footer>
+     <div class="container mt-5">
+       <div class="row">
+         <div class="mx-auto">
+           <p>CopyRight Infratop.inc</p>
+         </div>
+       </div>
+     </div>
+   </footer>
+
+   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   </body>
 </html>
